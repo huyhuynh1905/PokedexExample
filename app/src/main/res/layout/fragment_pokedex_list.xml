@@ -4,14 +4,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="pokedexViewModel"
             type="com.huyhuynh.mypokedex.screen.main.fragment.pokedex.PokedexListFragmentViewModel" />
     </data>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="20"
-        pokemonItem="@{pokedexViewModel.pokemonList}"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="20"
+            pokemonItem="@{pokedexViewModel.pokemonList}"/>
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:id="@+id/progressBar"
+            android:visibility="@{pokedexViewModel.loading ? View.VISIBLE : View.GONE}"
+            android:progressDrawable="@color/bgLogin"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 </layout>

@@ -16,6 +16,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     var pokemonList: ObservableList<Pokemon> = ObservableArrayList()
     private var repository: PokemonRepository ?=null
     val loading = MutableLiveData<Boolean>()
+
     init {
         loading.value = false
         repository = PokemonRepository(BaseApi().providerPokedexApi())
@@ -24,12 +25,12 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
 
     @SuppressLint("CheckResult")
     fun loadData() {
-        loading.postValue(false)
+        loading.postValue(true)
 
         repository!!.getPokemon().observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).subscribe(
-                {it -> handleResponse(it)},
-                {it -> handleError(it)}
+                {handleResponse(it)},
+                {handleError(it)}
             )
 
         loading.value = false
@@ -38,7 +39,10 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     private fun handleResponse(it: List<Pokemon>?) {
         loading.value = false
         pokemonList.clear()
-        it?.let { it1 -> pokemonList.addAll(it1) }
+        it?.let {
+            it1 -> pokemonList.addAll(it1)
+
+        }
     }
 
     private fun handleError(message: Throwable) {
