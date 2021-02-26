@@ -13,7 +13,9 @@
         tools:layout="@layout/fragment_pokedex_list" >
         <action
             android:id="@+id/action_pokedexListFragment_to_pokemonDetailsFragment"
-            app:destination="@id/pokemonDetailsFragment" />
+            app:destination="@id/pokemonDetailsFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailsFragment"

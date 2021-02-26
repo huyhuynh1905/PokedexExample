@@ -1,11 +1,12 @@
 package com.huyhuynh.mypokedex.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-class Pokemon {
+class Pokemon : Serializable {
     @SerializedName("name")
     var name: String? = null
-    @SerializedName("pokemon")
+    @SerializedName("id")
     var id: String? = null
     @SerializedName("imageurl")
     var imageurl: String? = null

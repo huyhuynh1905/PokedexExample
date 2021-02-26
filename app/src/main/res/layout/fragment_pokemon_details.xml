@@ -1,14 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screen.main.fragment.pokemon.PokemonDetailsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="pokemonViewModel"
+            type="com.huyhuynh.mypokedex.screen.main.fragment.pokemon.PokemonDetailsFragmentViewModel" />
+    </data>
+    <LinearLayout
+        android:background="#F44336"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <TextView
+            android:text="@{pokemonViewModel.name}"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:fontFamily="@font/circularstd_bold"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@{pokemonViewModel.typeofpokemon[0]}"
+                android:visibility="@{pokemonViewModel.typeofpokemon[0] == null ? View.GONE : View.VISIBLE}"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:background="@drawable/background_item_pokemon_span"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@{pokemonViewModel.typeofpokemon[1]}"
+                android:visibility="@{pokemonViewModel.typeofpokemon[1] == null ? View.GONE : View.VISIBLE}"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:background="@drawable/background_item_pokemon_span"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@{pokemonViewModel.typeofpokemon[2]}"
+                android:visibility="@{pokemonViewModel.typeofpokemon[2] == null ? View.GONE : View.VISIBLE}"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:background="@drawable/background_item_pokemon_span"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            loadImagePokedemon="@{pokemonViewModel.imageurl}"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="2dp"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:textColor="#fff"
+            android:text="@{pokemonViewModel.xdescription}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Height"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/textViewHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:text="@{pokemonViewModel.height}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Weight"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/textViewWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{pokemonViewModel.weight}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="HP"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="@{pokemonViewModel.hptext}" />
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="@{pokemonViewModel.hp}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Attack"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="@{pokemonViewModel.attacktext}" />
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="@{pokemonViewModel.attack}" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Defense"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="@{pokemonViewModel.defensetext}" />
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="@{pokemonViewModel.defense}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Breeding"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:fontFamily="@font/circularstd_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Gender"
+                    android:layout_weight="2"
+                    android:textColor="#DDD2D2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="@{pokemonViewModel.percentage}"
+                    android:textColor="#DDD2D2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Egg Group"
+                    android:layout_weight="2"
+                    android:textColor="#DDD2D2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="@{pokemonViewModel.egg_groups}"
+                    android:textColor="#DDD2D2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Cycles"
+                    android:layout_weight="2"
+                    android:textColor="#DDD2D2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="@{pokemonViewModel.cycles}"
+                    android:textColor="#DDD2D2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -19,9 +19,24 @@ object BindingUtil {
         }
     }
 
-    @BindingAdapter("imageLoading")
+    @BindingAdapter("loadImagePokedex")
     @JvmStatic
-    fun loadImage(imageView: ImageView, url: String) {
-        Glide.with(imageView.context).load(url).into(imageView)
+    fun loadImagePokedex(imageView: ImageView, url: String) {
+        if (url == null){
+            Glide.with(imageView.context).load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png").into(imageView)
+        } else {
+            Glide.with(imageView.context).load(url).into(imageView)
+        }
     }
+
+    @BindingAdapter("loadImagePokedemon")
+    @JvmStatic
+    fun loadImagePokedemon(imageView: ImageView, url: String?) {
+        if (url == null){
+            Glide.with(imageView.context).load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png").into(imageView)
+        } else {
+            Glide.with(imageView.context).load(url).into(imageView)
+        }
+    }
+
 }
