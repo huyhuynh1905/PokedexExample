@@ -30,10 +30,4 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
 
     }
-
-    interface LoadDataPokemonDetailsFromFragment {
-        fun getPokemonObject(pokemon: Pokemon)
-    }
-
-
 }
