@@ -2,10 +2,8 @@ package com.huyhuynh.mypokedex.screen.main.fragment.pokedex
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.huyhuynh.mypokedex.BR
@@ -24,6 +22,10 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
         get() = R.layout.fragment_pokedex_list
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
+        viewModel.context = this@PokedexListFragment.context?.applicationContext
+        //viewModel.context?.deleteDatabase("sqlite2ExcelDemo")
+        viewModel.createData()
+        viewModel.loadData()
         viewDataBinding?.recyclerView?.apply {
             adapter = PokemonAdapter(viewModel.pokemonList, onItemClick)
             hasFixedSize()

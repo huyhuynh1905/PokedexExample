@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class Pokemon : Serializable {
-    @SerializedName("name")
-    var name: String? = null
     @SerializedName("id")
     var id: String? = null
+    @SerializedName("name")
+    var name: String? = null
     @SerializedName("imageurl")
     var imageurl: String? = null
     @SerializedName("xdescription")
@@ -59,4 +59,35 @@ class Pokemon : Serializable {
     @SerializedName("base_exp")
     var base_exp: String? = null
 
+    constructor(
+        id: String?,
+        name: String?,
+        imageurl: String?,
+        xdescription: String?,
+        height: String?,
+        weight: String?,
+        typeofpokemon: List<String>?,
+        hp: Int,
+        attack: Int,
+        defense: Int,
+        male_percentage: String?,
+        female_percentage: String?,
+        cycles: String?,
+        egg_groups: String?
+    ) {
+        this.id = id
+        this.name = name
+        this.imageurl = imageurl
+        this.xdescription = xdescription
+        this.height = height
+        this.weight = weight
+        this.typeofpokemon = typeofpokemon
+        this.hp = hp
+        this.attack = attack
+        this.defense = defense
+        this.male_percentage = male_percentage
+        this.female_percentage = female_percentage
+        this.cycles = cycles
+        this.egg_groups = egg_groups
+    }
 }
