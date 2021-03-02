@@ -307,6 +307,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_marginTop="40dp"
+                android:textColor="#fff"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:background="@drawable/custom_button_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </LinearLayout>

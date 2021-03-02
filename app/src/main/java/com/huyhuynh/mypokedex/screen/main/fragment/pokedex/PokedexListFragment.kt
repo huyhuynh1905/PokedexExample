@@ -49,4 +49,6 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
 
     }
 
+
+
 }

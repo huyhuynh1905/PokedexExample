@@ -1,12 +1,15 @@
 package com.huyhuynh.mypokedex.screen.main.fragment.pokemon
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.databinding.ObservableList
+import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
+import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import demo.com.weatherapp.screen.base.viewmodel.BaseViewModel
 import java.util.ArrayList
@@ -32,6 +35,7 @@ class PokemonDetailsFragmentViewModel @Inject constructor() : BaseViewModel(){
     var cycles : ObservableField<String> = ObservableField()
 
     //\u2641 87.5%  \u2640 12.5%
+
 
     init {
         loadData()
@@ -59,4 +63,5 @@ class PokemonDetailsFragmentViewModel @Inject constructor() : BaseViewModel(){
         egg_groups.set(pokemon.egg_groups)
         cycles.set(pokemon.cycles)
     }
+
 }

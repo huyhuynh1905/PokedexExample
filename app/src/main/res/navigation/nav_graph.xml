@@ -23,5 +23,9 @@
         android:id="@+id/pokemonDetailsFragment"
         android:name="com.huyhuynh.mypokedex.screen.main.fragment.pokemon.PokemonDetailsFragment"
         android:label="fragment_pokemon_details"
-        tools:layout="@layout/fragment_pokemon_details" />
+        tools:layout="@layout/fragment_pokemon_details" >
+        <action
+            android:id="@+id/action_pokemonDetailsFragment_to_pokedexListFragment"
+            app:destination="@id/pokedexListFragment" />
+    </fragment>
 </navigation>

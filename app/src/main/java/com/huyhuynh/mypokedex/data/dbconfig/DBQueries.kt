@@ -55,6 +55,7 @@ class DBQueries {
             }
         }
         return database!!.insert(DBConstants.POKEMON_TABLE, null, values) > -1
+
     }
 
 
@@ -121,5 +122,14 @@ class DBQueries {
         return false
     }
 
+    fun deletePokemon(pokemonId: String) : Boolean{
+        if (findItemExist(pokemonId)) {
+            return database!!.delete(
+                DBConstants.POKEMON_TABLE,
+                DBConstants.POKEMON_ID + "= \'" + pokemonId+"\'", null
+            ) > -1
+        }
+        return false
+    }
 
 }

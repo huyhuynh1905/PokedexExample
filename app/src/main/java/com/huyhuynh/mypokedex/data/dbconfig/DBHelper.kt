@@ -20,8 +20,6 @@ class DBHelper : SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DBConstants.POKEMON_TABLE)
     }
 
-
-
     companion object {
         var DB_NAME = "PokemonDB"
         private const val DB_VERSION = 1
