@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import com.huyhuynh.mypokedex.R
 import com.huyhuynh.mypokedex.screen.main.activity.login.LoginActivity
-import com.huyhuynh.mypokedex.screen.main.fragment.pokedex.PokedexListFragment
 import com.huyhuynh.mypokedex.screen.main.fragment.pokedex.PokedexListFragmentArgs
 
 class MainActivity : AppCompatActivity() {
@@ -22,10 +21,13 @@ class MainActivity : AppCompatActivity() {
             )
     }
 
+/*
     override fun onBackPressed() {
         super.onBackPressed()
         var intent1 =  Intent(this, LoginActivity::class.java)
         startActivity(intent1)
         finish()
     }
+*/
+
 }
