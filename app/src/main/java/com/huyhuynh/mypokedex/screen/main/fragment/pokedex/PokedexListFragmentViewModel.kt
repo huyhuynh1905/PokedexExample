@@ -20,6 +20,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     var pokemonList: ObservableList<Pokemon> = ObservableArrayList()
     private var repository: PokemonRepository ?=null
     val loading = MutableLiveData<Boolean>()
+    var email:String?=null
 
     //
     var context: Context? = null
@@ -35,16 +36,24 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     fun loadData() {
         loading.postValue(true)
 
-//        repository!!.getPokemon().observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io()).subscribe(
-//                {handleResponse(it)},
-//                {handleError(it)}
-//            )
-        createData()
+        if (email=="huy") {
+            repository!!.getPokemon().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io()).subscribe(
+                    {handleResponse(it)},
+                    {handleError(it)}
+                )
+
+        } else {
+            loadFromDataBase()
+        }
+        loading.value = false
+    }
+
+    private fun loadFromDataBase() {
+        loading.value = false
         dbQueries?.open()
         dbQueries?.readPokemon()?.let { pokemonList.addAll(it) }
         dbQueries?.close()
-        loading.value = false
     }
 
     private fun handleResponse(it: List<Pokemon>?) {
@@ -54,15 +63,11 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
             it1 -> pokemonList.addAll(it1)
         }
         pokemonList?.let {
-
-            dbQueries?.open() //Mở
+            dbQueries?.open()
             for (itemPokemon in it){
-                //Tính đẩy vào database ở đây
-                Log.d("indItemExist", "Gọi vào đây")
                 dbQueries?.insertPokemon(itemPokemon)
-
             }
-            dbQueries?.close() //Đóng ở đây
+            dbQueries?.close()
         }
     }
 

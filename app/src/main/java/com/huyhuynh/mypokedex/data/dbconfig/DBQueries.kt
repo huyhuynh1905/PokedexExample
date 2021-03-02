@@ -38,10 +38,7 @@ class DBQueries {
         values.put(DBConstants.POKEMON_DESCRIPTION, pokemon.xdescription)
         values.put(DBConstants.POKEMON_HEIGHT, pokemon.height)
         values.put(DBConstants.POKEMON_WEIGHT, pokemon.weight)
-        var typeOfPokemon:String ?=null
-        for (item in pokemon.typeofpokemon!!){
-            typeOfPokemon= item + ","
-        }
+        var typeOfPokemon = pokemon.typeofpokemon.toString().substring(1,pokemon.typeofpokemon.toString().length-1)
         values.put(DBConstants.POKEMON_TYPEOFPOKEMON, typeOfPokemon)
         values.put(DBConstants.POKEMON_HP, pokemon.hp)
         values.put(DBConstants.POKEMON_ATTACK, pokemon.attack)
@@ -52,10 +49,8 @@ class DBQueries {
         values.put(DBConstants.POKEMON_EGG, pokemon.egg_groups)
         pokemon.id?.let {
             if(findItemExist(it)) {
-                Log.d("indItemExist", "Có tồn tại")
                 return database!!.update(DBConstants.POKEMON_TABLE, values, DBConstants.POKEMON_ID,  null) > -1
             } else {
-                Log.d("indItemExist", "Không tồn tại")
                 return database!!.insert(DBConstants.POKEMON_TABLE, null, values) > -1
             }
         }
@@ -83,7 +78,6 @@ class DBQueries {
                             val pokemonType:String =
                                 it.getString(cursor.getColumnIndex(DBConstants.POKEMON_TYPEOFPOKEMON))
                             var typePokemon: MutableList<String> = pokemonType.split(",") as MutableList<String>
-                            typePokemon.removeAt(typePokemon.size)
                             val pokemonHp = it.getInt(cursor.getColumnIndex(DBConstants.POKEMON_HP))
                             val pokemonAtk = it.getInt(cursor.getColumnIndex(DBConstants.POKEMON_ATTACK))
                             val pokemonDef = it.getInt(cursor.getColumnIndex(DBConstants.POKEMON_DEFENSE))
@@ -104,7 +98,7 @@ class DBQueries {
             }
 
         } catch (e: Exception) {
-            Log.v("Exception", e.message)
+            Log.d("readPokemon", e.message)
         }
         return list
     }
@@ -113,7 +107,6 @@ class DBQueries {
         try {
             var cursor: Cursor?
             database = dbHelper?.readableDatabase
-            Log.d("indItemExist", DBConstants.EXIST_QUERY + code + "\'" )
             cursor = database?.rawQuery(DBConstants.EXIST_QUERY + code + "\'", null)
             cursor?.let {
                 if (it.count > 0) {
@@ -122,7 +115,7 @@ class DBQueries {
                 cursor.close()
             }
         } catch (e: Exception) {
-            Log.v("Exception", e.message)
+            Log.d("findItemExist", e.message)
             return false
         }
         return false

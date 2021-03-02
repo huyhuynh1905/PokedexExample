@@ -33,11 +33,12 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityVie
             R.id.btn_login -> {
                 var email = viewModel.email.get()
                 var pass = viewModel.pass.get()
-                if (email=="huy" && pass=="qwe"){
+                if ((email=="huy"||email=="huynh") && pass=="123"){
                     val intent = Intent(this,MainActivity::class.java)
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this,"Nhập email \"huy\" và password \"qwe\"",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Nhập email \"huy\" || \"huynh\" và password \"123\"",Toast.LENGTH_SHORT).show()
                 }
             }
             R.id.btn_register -> {

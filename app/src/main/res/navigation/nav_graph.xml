@@ -16,6 +16,8 @@
             app:destination="@id/pokemonDetailsFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+        <argument android:name="email"
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailsFragment"

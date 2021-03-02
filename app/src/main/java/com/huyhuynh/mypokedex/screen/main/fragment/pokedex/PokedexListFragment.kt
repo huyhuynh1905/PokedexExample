@@ -22,8 +22,10 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
         get() = R.layout.fragment_pokedex_list
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
+        val emailRece = arguments
+        viewModel.email = emailRece?.get("email").toString()
         viewModel.context = this@PokedexListFragment.context?.applicationContext
-        //viewModel.context?.deleteDatabase("sqlite2ExcelDemo")
+//        viewModel.context?.deleteDatabase("PokemonDB")
         viewModel.createData()
         viewModel.loadData()
         viewDataBinding?.recyclerView?.apply {

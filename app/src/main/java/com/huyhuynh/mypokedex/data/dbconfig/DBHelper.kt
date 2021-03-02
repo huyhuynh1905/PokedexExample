@@ -23,7 +23,7 @@ class DBHelper : SQLiteOpenHelper {
 
 
     companion object {
-        var DB_NAME = "sqlite2ExcelDemo"
-        private const val DB_VERSION = 2
+        var DB_NAME = "PokemonDB"
+        private const val DB_VERSION = 1
     }
 }
