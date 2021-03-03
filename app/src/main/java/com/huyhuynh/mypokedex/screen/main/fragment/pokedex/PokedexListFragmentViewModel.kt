@@ -25,11 +25,15 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
 
     //
     var context: Context? = MainApplication.getContextInstance()
+    //var dbHelper: DBHelper? = null
     var dbQueries: DBQueries? = null
     init {
+        //
+
+        //
         loading.value = false
         repository = PokemonRepository(BaseApi().providerPokedexApi())
-        loadData()
+        //loadData()
     }
 
     @SuppressLint("CheckResult")
@@ -37,6 +41,8 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
         loading.postValue(true)
 
         if (email=="huy") {
+            Log.d("loadData","Chạy true")
+            Log.d("loadData",email.toString())
             repository!!.getPokemon().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribe(
                     {handleResponse(it)},
@@ -44,6 +50,8 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
                 )
 
         } else {
+            Log.d("loadData",email.toString())
+            Log.d("loadData","Chạy else")
             loadFromDataBase()
         }
         loading.value = false
@@ -65,11 +73,15 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
             it1 -> pokemonList.addAll(it1)
         }
         pokemonList?.let {
-            dbQueries?.open()
-            for (itemPokemon in it){
-                dbQueries?.insertPokemon(itemPokemon)
+            context?.let {
+                dbQueries = DBQueries(it)
+                dbQueries?.open()
+                for (itemPokemon in pokemonList){
+                    dbQueries?.insertPokemon(itemPokemon)
+                }
+                dbQueries?.close()
             }
-            dbQueries?.close()
+
         }
     }
 
@@ -77,4 +89,16 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
         loading.value = false
         message.printStackTrace()
     }
+
+/*    var iscall = false
+    fun createData(){
+        if(pokemonList.size <= 0) {
+            if (!iscall) {
+                iscall = true
+                dbHelper = context?.let { DBHelper(it) }
+                dbQueries = context?.let { DBQueries(it) }
+            }
+        }
+    }*/
+
 }

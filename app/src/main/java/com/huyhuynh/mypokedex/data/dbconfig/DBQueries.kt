@@ -112,6 +112,7 @@ class DBQueries (context: Context) {
         try {
             var cursor: Cursor?
             database = dbHelper?.readableDatabase
+            Log.d("findItemExist","findItemExist")
             cursor = database?.rawQuery(DBConstants.EXIST_QUERY + code + "\'", null)
             cursor?.let {
                 if (it.count > 0) {

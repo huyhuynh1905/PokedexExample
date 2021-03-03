@@ -1,6 +1,5 @@
 package com.huyhuynh.mypokedex.screen.main.fragment.pokemon
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
@@ -32,7 +31,7 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
         pokemon?.let {
             viewModel.getPokemonObject(it)
         }
-        var context = this@PokemonDetailsFragment.context?.applicationContext
+        val context = this@PokemonDetailsFragment.context?.applicationContext
         dbHelper = context?.let { DBHelper(it) }
         dbQueries = context?.let { DBQueries(it) }
         viewDataBinding?.btnDelete?.setOnClickListener {
