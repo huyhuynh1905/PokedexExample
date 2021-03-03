@@ -12,7 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import demo.com.weatherapp.screen.base.viewmodel.BaseViewModel
 
-abstract class BaseBindingActivity<V : ViewDataBinding, M : BaseViewModel>()
+abstract class BaseBindingActivity<V : ViewDataBinding, M : BaseViewModel>
     : BaseActivity() {
 
     var viewDataBinding: V? = null
@@ -40,7 +40,7 @@ abstract class BaseBindingActivity<V : ViewDataBinding, M : BaseViewModel>()
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun changeColorStatusBar() {
-        var   window: Window = this.window
+        val   window: Window = this.window
 
         if (Build.VERSION.SDK_INT in 19..20) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
@@ -54,7 +54,6 @@ abstract class BaseBindingActivity<V : ViewDataBinding, M : BaseViewModel>()
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
             window.statusBarColor = Color.TRANSPARENT
         }
-
     }
 
     private fun setWindowFlag(activity: Activity, bits: Int, on: Boolean) {

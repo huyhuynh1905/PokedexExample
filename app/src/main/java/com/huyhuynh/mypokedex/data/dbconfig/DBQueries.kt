@@ -9,19 +9,23 @@ import android.util.Log
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import java.util.ArrayList
 
-class DBQueries {
+class DBQueries (context: Context) {
 
-    private var context: Context? = null
     private var database: SQLiteDatabase? = null
-    private var dbHelper: DBHelper? = null
+    private var dbHelper: DBHelper? = DBHelper.getInstance(context)
 
-    constructor(context: Context){
-        this.context = context
+    companion object{
+        private var instance : DBQueries?=null
+        fun getInstance(context: Context):DBQueries?{
+            if (instance==null){
+                instance = DBQueries(context)
+            }
+            return instance
+        }
     }
 
     @Throws(SQLException::class)
     fun open(): DBQueries {
-        dbHelper = context?.let { DBHelper(it) }
         database = dbHelper!!.writableDatabase
         return this
     }

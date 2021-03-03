@@ -10,6 +10,7 @@ import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
 import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.data.repository.PokemonRepository
+import demo.com.weatherapp.MainApplication
 import demo.com.weatherapp.data.source.remote.BaseApi
 import demo.com.weatherapp.screen.base.viewmodel.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,8 +24,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     var email:String?=null
 
     //
-    var context: Context? = null
-    var dbHelper: DBHelper? = null
+    var context: Context? = MainApplication.getContextInstance()
     var dbQueries: DBQueries? = null
     init {
         loading.value = false
@@ -51,9 +51,11 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
 
     private fun loadFromDataBase() {
         loading.value = false
-        dbQueries?.open()
-        dbQueries?.readPokemon()?.let { pokemonList.addAll(it) }
-        dbQueries?.close()
+        context?.let {
+            DBQueries.getInstance(it)!!.readPokemon().let {
+                pokemonList.addAll(it)
+            }
+        }
     }
 
     private fun handleResponse(it: List<Pokemon>?) {
@@ -74,16 +76,5 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     private fun handleError(message: Throwable) {
         loading.value = false
         message.printStackTrace()
-    }
-
-    var iscall = false
-    fun createData(){
-        if(pokemonList.size <= 0) {
-            if (!iscall) {
-                iscall = true
-                dbHelper = context?.let { DBHelper(it) }
-                dbQueries = context?.let { DBQueries(it) }
-            }
-        }
     }
 }

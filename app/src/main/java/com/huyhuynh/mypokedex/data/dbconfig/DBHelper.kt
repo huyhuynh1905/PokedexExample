@@ -23,5 +23,12 @@ class DBHelper : SQLiteOpenHelper {
     companion object {
         var DB_NAME = "PokemonDB"
         private const val DB_VERSION = 1
+        private var instance : DBHelper? =null
+        fun getInstance(context: Context):DBHelper?{
+            if (instance==null){
+                instance = DBHelper(context)
+            }
+            return instance
+        }
     }
 }
