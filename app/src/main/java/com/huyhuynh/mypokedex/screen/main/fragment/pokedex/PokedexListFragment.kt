@@ -22,12 +22,6 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
         get() = R.layout.fragment_pokedex_list
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-        //viewModel.context = this@PokedexListFragment.context?.applicationContext
-        val emailRece = arguments
-        viewModel.email = emailRece?.get("email").toString()
-//        viewModel.context?.deleteDatabase("PokemonDB")
-//        viewModel.createData()
-        viewModel.loadData()
         viewDataBinding?.recyclerView?.apply {
             adapter = PokemonAdapter(viewModel.pokemonList, onItemClick)
             hasFixedSize()
@@ -37,18 +31,15 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
-
+        val emailRece = arguments
+        viewModel.email = emailRece?.get("email").toString()
     }
 
     private val onItemClick = object : PokemonAdapter.OnItemClickListener {
         override fun onClickScan(value: Pokemon) {
-            //Toast.makeText(this@PokedexListFragment.context,"Click name: "+value.name,Toast.LENGTH_SHORT).show()
             val bundle = bundleOf("pokemon" to value)
             findNavController().navigate(R.id.action_pokedexListFragment_to_pokemonDetailsFragment, bundle)
         }
 
     }
-
-
-
 }

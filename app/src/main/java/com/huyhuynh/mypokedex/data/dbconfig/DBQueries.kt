@@ -42,7 +42,7 @@ class DBQueries (context: Context) {
         values.put(DBConstants.POKEMON_DESCRIPTION, pokemon.xdescription)
         values.put(DBConstants.POKEMON_HEIGHT, pokemon.height)
         values.put(DBConstants.POKEMON_WEIGHT, pokemon.weight)
-        var typeOfPokemon = pokemon.typeofpokemon.toString().substring(1,pokemon.typeofpokemon.toString().length-1)
+        val typeOfPokemon = pokemon.typeofpokemon.toString().substring(1,pokemon.typeofpokemon.toString().length-1)
         values.put(DBConstants.POKEMON_TYPEOFPOKEMON, typeOfPokemon)
         values.put(DBConstants.POKEMON_HP, pokemon.hp)
         values.put(DBConstants.POKEMON_ATTACK, pokemon.attack)
@@ -72,7 +72,7 @@ class DBQueries (context: Context) {
     fun readPokemon(): ArrayList<Pokemon> {
         val list: ArrayList<Pokemon> = ArrayList()
         try {
-            var cursor: Cursor?
+            val cursor: Cursor?
             database = dbHelper?.readableDatabase
             cursor = database?.rawQuery(DBConstants.SELECT_QUERY, null)
             list.clear()
@@ -88,7 +88,7 @@ class DBQueries (context: Context) {
                             val pokemonWWeight = it.getString(cursor.getColumnIndex(DBConstants.POKEMON_WEIGHT))
                             val pokemonType:String =
                                 it.getString(cursor.getColumnIndex(DBConstants.POKEMON_TYPEOFPOKEMON))
-                            var typePokemon: MutableList<String> = pokemonType.split(",") as MutableList<String>
+                            val typePokemon: MutableList<String> = pokemonType.split(",") as MutableList<String>
                             val pokemonHp = it.getInt(cursor.getColumnIndex(DBConstants.POKEMON_HP))
                             val pokemonAtk = it.getInt(cursor.getColumnIndex(DBConstants.POKEMON_ATTACK))
                             val pokemonDef = it.getInt(cursor.getColumnIndex(DBConstants.POKEMON_DEFENSE))
@@ -116,7 +116,7 @@ class DBQueries (context: Context) {
 
     private fun findItemExist(code: String):Boolean{
         try {
-            var cursor: Cursor?
+            val cursor: Cursor?
             database = dbHelper?.readableDatabase
 //            Log.d("findItemExist","findItemExist")
             cursor = database?.rawQuery(DBConstants.EXIST_QUERY + code + "\'", null)

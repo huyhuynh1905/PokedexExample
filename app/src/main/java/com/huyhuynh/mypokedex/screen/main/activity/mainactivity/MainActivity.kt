@@ -1,11 +1,9 @@
 package com.huyhuynh.mypokedex.screen.main.activity.mainactivity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import com.huyhuynh.mypokedex.R
-import com.huyhuynh.mypokedex.screen.main.activity.login.LoginActivity
 import com.huyhuynh.mypokedex.screen.main.fragment.pokedex.PokedexListFragmentArgs
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var emailData = intent.getStringExtra("email")
+        val emailData = intent.getStringExtra("email")
         findNavController(R.id.nav_host_fragment)
             .setGraph(
                 R.navigation.nav_graph,

@@ -2,13 +2,10 @@ package com.huyhuynh.mypokedex.screen.main.fragment.pokedex
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
-import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
 import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.data.repository.PokemonRepository
@@ -36,7 +33,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
         //
         loading.value = false
         repository = PokemonRepository(BaseApi().providerPokedexApi())
-        //loadData()
+        loadData()
     }
 
     @SuppressLint("CheckResult")
@@ -73,16 +70,13 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
         it?.let {
             it1 -> pokemonList.addAll(it1)
         }
-        pokemonList?.let {
-            context?.let {
-                dbQueries = DBQueries(it)
-                dbQueries?.open()
-                for (itemPokemon in pokemonList){
-                    dbQueries?.insertPokemon(itemPokemon)
-                }
-                dbQueries?.close()
+        context?.let {
+            dbQueries = DBQueries(it)
+            dbQueries?.open()
+            for (itemPokemon in pokemonList){
+                dbQueries?.insertPokemon(itemPokemon)
             }
-
+            dbQueries?.close()
         }
     }
 

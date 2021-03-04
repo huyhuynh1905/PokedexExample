@@ -51,7 +51,7 @@ class PokemonDetailsFragmentViewModel @Inject constructor() : BaseViewModel(){
         attacktext.set(pokemon.attack.toString())
         hptext.set(pokemon.hp.toString())
         defensetext.set(pokemon.defense.toString())
-        var perStr = "\u2641 ${pokemon?.male_percentage}  \u2640 ${pokemon?.female_percentage}"
+        val perStr = "\u2641 ${pokemon?.male_percentage}  \u2640 ${pokemon?.female_percentage}"
         percentage.set(perStr)
         egg_groups.set(pokemon.egg_groups)
         cycles.set(pokemon.cycles)

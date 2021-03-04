@@ -31,8 +31,8 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityVie
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btn_login -> {
-                var email = viewModel.email.get()
-                var pass = viewModel.pass.get()
+                val email = viewModel.email.get()
+                val pass = viewModel.pass.get()
                 if ((email=="huy"||email=="huynh") && pass=="123"){
                     val intent = Intent(this,MainActivity::class.java)
                     intent.putExtra("email",email)
