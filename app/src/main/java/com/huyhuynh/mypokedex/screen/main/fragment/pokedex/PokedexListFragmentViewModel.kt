@@ -2,6 +2,8 @@ package com.huyhuynh.mypokedex.screen.main.fragment.pokedex
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
@@ -10,6 +12,7 @@ import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
 import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.data.repository.PokemonRepository
+import com.huyhuynh.mypokedex.screen.utils.InternetUtils
 import demo.com.weatherapp.MainApplication
 import demo.com.weatherapp.data.source.remote.BaseApi
 import demo.com.weatherapp.screen.base.viewmodel.BaseViewModel
@@ -40,9 +43,8 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     fun loadData() {
         loading.postValue(true)
 
-        if (email=="huy") {
-            Log.d("loadData","Chạy true")
-            Log.d("loadData",email.toString())
+        if (InternetUtils.isNetworkAvailable(MainApplication.getContextInstance())) {
+            Log.d("loadData","Chạy có network")
             repository!!.getPokemon().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribe(
                     {handleResponse(it)},
@@ -50,8 +52,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
                 )
 
         } else {
-            Log.d("loadData",email.toString())
-            Log.d("loadData","Chạy else")
+            Log.d("loadData","Chạy không có netwwork")
             loadFromDataBase()
         }
         loading.value = false
@@ -89,6 +90,8 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
         loading.value = false
         message.printStackTrace()
     }
+
+
 
 /*    var iscall = false
     fun createData(){

@@ -53,13 +53,19 @@ class DBQueries (context: Context) {
         values.put(DBConstants.POKEMON_EGG, pokemon.egg_groups)
         pokemon.id?.let {
             if(findItemExist(it)) {
-                return database!!.update(DBConstants.POKEMON_TABLE, values, DBConstants.POKEMON_ID,  null) > -1
+                database?.let {
+                    return it.update(DBConstants.POKEMON_TABLE, values, DBConstants.POKEMON_ID,  null) > -1
+                }
             } else {
-                return database!!.insert(DBConstants.POKEMON_TABLE, null, values) > -1
+                database?.let {
+                    return it.insert(DBConstants.POKEMON_TABLE, null, values) > -1
+                }
             }
         }
-        return database!!.insert(DBConstants.POKEMON_TABLE, null, values) > -1
-
+        database?.let {
+            return it.insert(DBConstants.POKEMON_TABLE, null, values) > -1
+        }
+        return false
     }
 
 
@@ -112,7 +118,7 @@ class DBQueries (context: Context) {
         try {
             var cursor: Cursor?
             database = dbHelper?.readableDatabase
-            Log.d("findItemExist","findItemExist")
+//            Log.d("findItemExist","findItemExist")
             cursor = database?.rawQuery(DBConstants.EXIST_QUERY + code + "\'", null)
             cursor?.let {
                 if (it.count > 0) {
@@ -127,12 +133,14 @@ class DBQueries (context: Context) {
         return false
     }
 
-    fun deletePokemon(pokemonId: String) : Boolean{
+    fun deletePokemon(pokemonId: String) : Boolean?{
         if (findItemExist(pokemonId)) {
-            return database!!.delete(
-                DBConstants.POKEMON_TABLE,
-                DBConstants.POKEMON_ID + "= \'" + pokemonId+"\'", null
-            ) > -1
+            database?.let {
+                return it.delete(
+                    DBConstants.POKEMON_TABLE,
+                    DBConstants.POKEMON_ID + "= \'" + pokemonId+"\'", null
+                ) > -1
+            }
         }
         return false
     }

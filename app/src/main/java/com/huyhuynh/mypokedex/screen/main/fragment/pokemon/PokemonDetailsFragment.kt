@@ -35,11 +35,11 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
         dbHelper = context?.let { DBHelper(it) }
         dbQueries = context?.let { DBQueries(it) }
         viewDataBinding?.btnDelete?.setOnClickListener {
-            dbQueries!!.open()
+            dbQueries?.open()
             pokemon?.id?.let {
-                dbQueries!!.deletePokemon(it)
+                dbQueries?.deletePokemon(it)
             }
-            dbQueries!!.close()
+            dbQueries?.close()
             findNavController().navigate(R.id.action_pokemonDetailsFragment_to_pokedexListFragment)
             this.onDetach()
         }
