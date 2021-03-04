@@ -27,10 +27,13 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
     var dbQueries: DBQueries? = null
     var pokemon: Pokemon?=null
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
+        //nhận data từ fragment trước
         pokemon = arguments?.getSerializable("pokemon") as Pokemon?
         pokemon?.let {
             viewModel.getPokemonObject(it)
         }
+
+        //bắt sự kiện delete, chỉ dùng cho trường hợp database
         val context = this@PokemonDetailsFragment.context?.applicationContext
         dbHelper = context?.let { DBHelper(it) }
         dbQueries = context?.let { DBQueries(it) }

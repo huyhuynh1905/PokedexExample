@@ -28,7 +28,7 @@ class PokemonAdapter(var items: List<Pokemon>, var onItemClickListener: OnItemCl
                 setVariable(BR.pokemon, pokemon)
                 executePendingBindings()
             }
-            binding.relativeLayoutBackground?.setOnClickListener {
+            binding.relativeLayoutBackground.setOnClickListener {
                 onItemClickListener?.onClickScan(pokemon)
             }
         }

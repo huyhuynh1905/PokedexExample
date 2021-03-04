@@ -20,13 +20,13 @@
             tools:itemCount="20"
             pokemonItem="@{pokedexViewModel.pokemonList}"/>
 
-<!--        <ProgressBar-->
-<!--            android:layout_gravity="center"-->
-<!--            android:id="@+id/progressBar"-->
-<!--            android:visibility="@{pokedexViewModel.loading ? View.VISIBLE : View.GONE}"-->
-<!--            android:progressDrawable="@color/bgLogin"-->
-<!--            style="?android:attr/progressBarStyleLarge"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content" />-->
+        <ProgressBar
+            android:layout_gravity="center"
+            android:id="@+id/progressBar"
+            android:visibility="@{pokedexViewModel.loading ? View.VISIBLE : View.GONE}"
+            android:progressDrawable="@color/bgLogin"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </FrameLayout>
 </layout>

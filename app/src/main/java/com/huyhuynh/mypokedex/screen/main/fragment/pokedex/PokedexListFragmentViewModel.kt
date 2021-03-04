@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.data.repository.PokemonRepository
+import com.huyhuynh.mypokedex.screen.utils.CheckNetwork
 import com.huyhuynh.mypokedex.screen.utils.InternetUtils
 import demo.com.weatherapp.MainApplication
 import demo.com.weatherapp.data.source.remote.BaseApi
@@ -28,9 +29,6 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     //var dbHelper: DBHelper? = null
     var dbQueries: DBQueries? = null
     init {
-        //
-
-        //
         loading.value = false
         repository = PokemonRepository(BaseApi().providerPokedexApi())
         loadData()
@@ -38,18 +36,16 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
 
     @SuppressLint("CheckResult")
     fun loadData() {
-        loading.postValue(true)
-
-        if (InternetUtils.isNetworkAvailable(MainApplication.getContextInstance())) {
-            Log.d("loadData","Chạy có network")
-            repository!!.getPokemon().observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io()).subscribe(
+        if (CheckNetwork.isConnectedNetwork()) {
+            loading.postValue(true)
+            Log.d("Internet","Chạy có network")
+            repository?.getPokemon()?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribeOn(Schedulers.io())?.subscribe(
                     {handleResponse(it)},
                     {handleError(it)}
                 )
-
         } else {
-            Log.d("loadData","Chạy không có netwwork")
+            Log.d("Internet","Chạy không có netwwork")
             loadFromDataBase()
         }
         loading.value = false
@@ -96,6 +92,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
                 dbQueries = context?.let { DBQueries(it) }
             }
         }
-    }*/
+    }
+*/
 
 }

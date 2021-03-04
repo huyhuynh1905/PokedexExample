@@ -57,12 +57,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-        <ImageView
+
+        <RelativeLayout
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            loadImagePokedemon="@{pokemonViewModel.imageurl}"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="-34dp"
+                android:adjustViewBounds="true"
+                android:alpha="0.25"
+                android:src="@drawable/pokeball"
+                app:tint="@color/white" />
+            <ImageView
+                android:layout_centerHorizontal="true"
+                loadImagePokedemon="@{pokemonViewModel.imageurl}"
+                android:layout_width="150dp"
+                android:layout_height="150dp"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_margin="5dp"
@@ -310,7 +327,7 @@
 
             <Button
                 android:id="@+id/btn_delete"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textColor="#fff"
                 android:text="Delete"
                 android:textAllCaps="false"

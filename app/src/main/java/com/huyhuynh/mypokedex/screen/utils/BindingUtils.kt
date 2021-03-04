@@ -1,9 +1,5 @@
 package demo.com.weatherapp.util
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +7,6 @@ import com.bumptech.glide.Glide
 import com.huyhuynh.mypokedex.R
 import com.huyhuynh.mypokedex.data.adapter.PokemonAdapter
 import com.huyhuynh.mypokedex.data.model.Pokemon
-import com.huyhuynh.mypokedex.screen.utils.InternetUtils
-import com.huyhuynh.mypokedex.screen.utils.Utils
-import demo.com.weatherapp.MainApplication
-import java.util.*
 
 object BindingUtil {
     @BindingAdapter("pokemonItem")

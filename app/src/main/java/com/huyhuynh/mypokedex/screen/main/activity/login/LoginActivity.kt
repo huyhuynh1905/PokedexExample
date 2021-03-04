@@ -6,9 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.huyhuynh.mypokedex.BR
+import com.huyhuynh.mypokedex.screen.utils.CheckNetwork
 import com.huyhuynh.mypokedex.R
 import com.huyhuynh.mypokedex.databinding.ActivityLoginBinding
 import com.huyhuynh.mypokedex.screen.main.activity.mainactivity.MainActivity
+import demo.com.weatherapp.MainApplication
 import demo.com.weatherapp.screen.base.activity.BaseBindingActivity
 
 class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityViewModel>() {
@@ -22,6 +24,11 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityVie
     override fun initVariable(savedInstanceState: Bundle?) {
         viewDataBinding?.btnLogin?.setOnClickListener(this)
         viewDataBinding?.btnRegister?.setOnClickListener(this)
+
+        //call back check internet, thực thi suốt ứng dụng.
+        val checkNetwork =
+            CheckNetwork(MainApplication.getContextInstance())
+        checkNetwork.registerNetworkCallback()
     }
 
     override fun initData(savedInstanceState: Bundle?) {
