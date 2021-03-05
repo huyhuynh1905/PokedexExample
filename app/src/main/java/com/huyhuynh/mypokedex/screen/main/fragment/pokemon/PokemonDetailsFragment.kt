@@ -43,8 +43,8 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
                 dbQueries?.deletePokemon(it)
             }
             dbQueries?.close()
-            findNavController().navigate(R.id.action_pokemonDetailsFragment_to_pokedexListFragment)
-            this.onDetach()
+//            findNavController().navigate(R.id.action_pokemonDetailsFragment_to_pokedexListFragment)
+            activity?.onBackPressed()
         }
     }
 

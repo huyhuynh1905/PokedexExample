@@ -33,19 +33,10 @@ object BindingUtil {
     @BindingAdapter("loadImagePokedemon")
     @JvmStatic
     fun loadImagePokedemon(imageView: ImageView, url: String?) {
-/*        if (InternetUtils.isNetworkAvailable(MainApplication.getContextInstance())){
-            if (url == null){
-                Glide.with(imageView.context).load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png").into(imageView)
-            } else {
-                Glide.with(imageView.context).load(url).into(imageView)
-            }
-        } else {
-            Glide.with(imageView.context).load(R.drawable.ex001).into(imageView)
-        }*/
         if (url == null){
             Glide.with(imageView.context).load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png").into(imageView)
         } else {
-            Glide.with(imageView.context).load(url).error(R.drawable.ex001).into(imageView)
+            Glide.with(imageView.context).load(url).error(R.drawable.pokeballforload).into(imageView)
         }
     }
 

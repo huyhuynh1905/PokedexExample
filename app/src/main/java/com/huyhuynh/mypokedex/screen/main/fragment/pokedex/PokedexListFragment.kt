@@ -22,6 +22,7 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
         get() = R.layout.fragment_pokedex_list
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
+        viewModel.loadData()
         viewDataBinding?.recyclerView?.apply {
             adapter = PokemonAdapter(viewModel.pokemonList, onItemClick)
             hasFixedSize()

@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
+import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
 import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.data.repository.PokemonRepository
@@ -54,6 +55,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
 
     private fun loadFromDataBase() {
         loading.value = false
+        pokemonList.clear()
         context?.let {
             var pokemons = DBQueries.getInstance(it)?.let {
                 it.readPokemon()
@@ -68,6 +70,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     private fun handleResponse(it: List<Pokemon>?) {
         loading.value = false
         pokemonList.clear()
+        context?.deleteDatabase(DBHelper.DB_NAME)
         it?.let {
             it1 -> pokemonList.addAll(it1)
         }
