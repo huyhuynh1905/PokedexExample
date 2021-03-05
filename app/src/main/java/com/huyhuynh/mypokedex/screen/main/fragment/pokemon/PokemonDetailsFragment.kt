@@ -51,4 +51,6 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
 
     }
+
+
 }

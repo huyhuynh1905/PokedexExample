@@ -3,6 +3,7 @@ package com.huyhuynh.mypokedex.screen.main.fragment.pokedex
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -54,8 +55,12 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     private fun loadFromDataBase() {
         loading.value = false
         context?.let {
-            DBQueries.getInstance(it)!!.readPokemon().let {
-                pokemonList.addAll(it)
+            var pokemons = DBQueries.getInstance(it)?.let {
+                it.readPokemon()
+            }
+            pokemons?.let { it1 -> pokemonList.addAll(it1) }
+            if (pokemonList.size==0){
+                Toast.makeText(context,"Chưa có dữ liệu, vui lòng mở internet để tải về",Toast.LENGTH_LONG).show()
             }
         }
     }

@@ -14,8 +14,8 @@
         <action
             android:id="@+id/action_pokedexListFragment_to_pokemonDetailsFragment"
             app:destination="@id/pokemonDetailsFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"/>
         <argument android:name="email"
             app:argType="string"/>
     </fragment>
@@ -26,6 +26,8 @@
         tools:layout="@layout/fragment_pokemon_details" >
         <action
             android:id="@+id/action_pokemonDetailsFragment_to_pokedexListFragment"
-            app:destination="@id/pokedexListFragment" />
+            app:destination="@id/pokedexListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 </navigation>
