@@ -2,6 +2,7 @@ package com.huyhuynh.mypokedex.screen.main.fragment.pokemon
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.huyhuynh.mypokedex.BR
@@ -10,6 +11,7 @@ import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
 import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
 import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.databinding.FragmentPokemonDetailsBinding
+import com.huyhuynh.mypokedex.screen.utils.CheckNetwork
 import demo.com.weatherapp.screen.base.fragment.BaseBindingFragment
 
 class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding,PokemonDetailsFragmentViewModel>() {
@@ -34,17 +36,20 @@ class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding
         }
 
         //bắt sự kiện delete, chỉ dùng cho trường hợp database
-        val context = this@PokemonDetailsFragment.context?.applicationContext
+        val context = activity?.applicationContext
         dbHelper = context?.let { DBHelper(it) }
         dbQueries = context?.let { DBQueries(it) }
         viewDataBinding?.btnDelete?.setOnClickListener {
-            dbQueries?.open()
-            pokemon?.id?.let {
-                dbQueries?.deletePokemon(it)
+            if (CheckNetwork.isConnectedNetwork()){
+                Toast.makeText(activity,"Chức năng chỉ sử dụng được khi không có kết nối mạng!",Toast.LENGTH_LONG).show()
+            } else {
+                dbQueries?.open()
+                pokemon?.id?.let {
+                    dbQueries?.deletePokemon(it)
+                }
+                dbQueries?.close()
+                activity?.onBackPressed()
             }
-            dbQueries?.close()
-//            findNavController().navigate(R.id.action_pokemonDetailsFragment_to_pokedexListFragment)
-            activity?.onBackPressed()
         }
     }
 
