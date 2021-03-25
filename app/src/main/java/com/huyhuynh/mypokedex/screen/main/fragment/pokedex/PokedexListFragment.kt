@@ -28,7 +28,6 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
             hasFixedSize()
             layoutManager = GridLayoutManager(this@PokedexListFragment.context,2)
         }
-
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
@@ -41,6 +40,7 @@ class PokedexListFragment : BaseBindingFragment<FragmentPokedexListBinding,Poked
             val bundle = bundleOf("pokemon" to value)
             findNavController().navigate(R.id.action_pokedexListFragment_to_pokemonDetailsFragment, bundle)
         }
-
     }
+
+    //to as by
 }

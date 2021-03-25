@@ -33,7 +33,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     init {
         loading.value = false
         repository = PokemonRepository(BaseApi().providerPokedexApi())
-        loadData()
+//        loadData()
     }
 
     @SuppressLint("CheckResult")
