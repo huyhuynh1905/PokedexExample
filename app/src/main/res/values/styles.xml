@@ -6,7 +6,11 @@
         <item name="colorPrimaryDark">@color/bgLogin</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="TextStyleDefault">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/main_blue_100</item>
+        <item name="android:gravity">center|start</item>
+    </style>
     //splash
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>

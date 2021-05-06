@@ -1,0 +1,169 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="item_daily_image_width">24dp</dimen>
+    <dimen name="item_daily_margin_top">10dp</dimen>
+    <dimen name="item_daily_text_size">16sp</dimen>
+    <dimen name="item_daily_padding">14dp</dimen>
+    <dimen name="item_daily_margin">16dp</dimen>
+    <dimen name="item_daily_padding_top">8dp</dimen>
+
+    <dimen name="main_line_margin_top">10dp</dimen>
+    <dimen name="main_line_height">1dp</dimen>
+    <dimen name="main_margin">16dp</dimen>
+    <dimen name="main_text_size_temp">65sp</dimen>
+    <dimen name="item_inventory_title">14sp</dimen>
+
+
+    <!--    POS    -->
+
+    <!-- ===========   Default ================ -->
+
+    <!--    padding-->
+    <dimen name="default_padding">10dp</dimen>
+    <dimen name="default_screen_padding">20dp</dimen>
+    <dimen name="default_screen_padding_vertical">20dp</dimen>
+    <dimen name="default_screen_padding_horizontal">20dp</dimen>
+    <dimen name="default_screen_padding_one_side">10dp</dimen>
+    <dimen name="text_non_padding">0dp</dimen>
+
+
+    <!--    margin-->
+    <dimen name="default_margin">10dp</dimen>
+    <dimen name="default_screen_margin">20dp</dimen>
+    <dimen name="default_screen_margin_vertical">20dp</dimen>
+    <dimen name="default_screen_margin_horizontal">20dp</dimen>
+    <dimen name="default_screen_margin_one_side">10dp</dimen>
+
+    <!--    Text-->
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="title_text_smaller_size">14sp</dimen>
+    <dimen name="normal_text_size">16sp</dimen>
+
+    <!--    image-->
+    <dimen name="icon_size">25dp</dimen>  <!-- 30*30 default icon size-->
+    <dimen name="icon_toolbar_size">40dp</dimen>  <!-- 30*30 default icon size-->
+    <dimen name="icon_smaller_size">20dp</dimen>  <!-- 20*20 -->
+
+    <!--    button-->
+    <dimen name="button_submit_padding">20dp</dimen>
+
+    <!--    other-->
+    <dimen name="line_bottom_option_item_height">1dp</dimen>
+    <dimen name="fab_padding_horizontal">40dp</dimen>
+
+    <!--    Toolbar-->
+    <dimen name="image_toolbar_height">50dp</dimen>
+    <dimen name="image_toolbar_width">160dp</dimen>
+    <dimen name="title_toolbar_size">18sp</dimen>
+    <dimen name="title_toolbar_padding_top">4dp</dimen>
+    <!-- ===========  End Default ================ -->
+
+    <!-- ===========   Screen    ================ -->
+    <!--    Login-->
+    <dimen name="text_login_size">18sp</dimen>
+    <dimen name="text_forgot_password_size">16sp</dimen>
+    <dimen name="text_input_edit_text_size">20sp</dimen>
+    <dimen name="text_forgot_password_margin_top">25dp</dimen>
+    <dimen name="text_input_edit_text_drawable_padding">5dp</dimen>
+    <dimen name="button_login_height">60dp</dimen>
+    <dimen name="button_login_width">180dp</dimen>
+    <dimen name="button_login_margin_top">25dp</dimen>
+
+    <!--    Payment-->
+    <dimen name="indicator_home_margin_horizontal">20dp</dimen>
+    <dimen name="indicator_home_margin_bottom">40dp</dimen>
+    <dimen name="button_weekly_pass_height">50dp</dimen>
+    <dimen name="radio_indicator_button_padding">10dp</dimen>
+    <dimen name="radio_indicator_button_margin">0.5dp</dimen>
+
+    <!--    account info-->
+    <dimen name="view_information_margin_vertical">20dp</dimen>
+    <dimen name="image_view_profile_size">150dp</dimen>   <!-- 150*150  -->
+    <dimen name="view_content_margin_bottom">30dp</dimen>
+
+    <!--    route info-->
+    <dimen name="text_route_departure_padding_vertical">5dp</dimen>
+    <dimen name="image_non_route_height">120dp</dimen>
+    <dimen name="view_route_info_padding">10dp</dimen>
+    <dimen name="text_route_smaller_size">12sp</dimen>
+    <dimen name="text_route_normal_size">18sp</dimen>
+
+    <!--    setting-->
+    <dimen name="divider_item_height">1dp</dimen>
+
+    <!--    summary-->
+    <dimen name="view_sum_padding_vertical">8dp</dimen>
+    <dimen name="view_top_sum_height">1dp</dimen>
+
+
+    <!-- =========== End Screen  ================ -->
+    <!-- ===========     Widget    ================ -->
+    <!--    dialog conform-->
+    <dimen name="card_view_dl_confirm_height">200dp</dimen>
+    <dimen name="card_view_dl_confirm_width">500dp</dimen>
+    <dimen name="card_view_dl_confirm_margin_horizontal">5dp</dimen>
+    <dimen name="card_view_dl_confirm_margin_bottom">5dp</dimen>
+    <dimen name="card_view_dl_confirm_margin_top">35dp</dimen>
+    <dimen name="card_view_dl_confirm_corner">20dp</dimen>
+    <dimen name="card_view_dl_confirm_elevation">10dp</dimen>
+    <dimen name="edit_text_dl_confirm_size">20sp</dimen>
+    <dimen name="content_dl_confirm_padding">20dp</dimen>
+    <dimen name="view_center_dl_confirm_button_width">1dp</dimen>
+    <dimen name="header_dl_confirm_elevation">10dp</dimen>
+    <dimen name="view_logo_dl_confirm_height">75dp</dimen>
+    <dimen name="view_logo_dl_confirm_width">75dp</dimen>
+    <dimen name="image_logo_dl_confirm_height">50dp</dimen>
+    <dimen name="text_dl_confirm_size">18sp</dimen>
+
+    <!--    dialog payment-->
+
+    <!--    dialog logout-->
+    <dimen name="dialog_confirm_logout_margin">16dp</dimen>
+    <dimen name="dialog_confirm_logout_margin_button">8dp</dimen>
+    <dimen name="dialog_confirm_logout_padding">40dp</dimen>
+    <!-- ===========   End Widget  ================ -->
+
+    <!-- ===========    Item   ================ -->
+    <!--    account info-->
+    <dimen name="text_value_margin_vertical">3dp</dimen>
+    <dimen name="item_info_margin_bottom">15dp</dimen>
+    <!--    sync info *si-->
+    <dimen name="view_item_si_padding_vertical">14dp</dimen>
+
+    <!--    sync data *sd-->
+    <dimen name="card_view_item_sd_height">70dp</dimen>
+
+    <!--    ticket order *to-->
+    <dimen name="view_item_to_elevation">10dp</dimen>
+    <dimen name="view_item_to_margin">10dp</dimen>
+    <dimen name="view_title_item_to_height">30dp</dimen>
+    <dimen name="text_title_row_size">18sp</dimen>
+    <dimen name="text_value_row_size">16sp</dimen>
+    <dimen name="item_row_margin_top">12dp</dimen>
+    <dimen name="image_background_item_height">120dp</dimen>
+
+    <!--    type ticket *tt-->
+    <dimen name="item_tt_height">120dp</dimen>
+    <dimen name="item_tt_margin">10dp</dimen>
+    <dimen name="text_tt_size">18sp</dimen>
+    <dimen name="text_tt_size2">15sp</dimen>
+    <dimen name="text_tt_margin_top">5dp</dimen>
+    <dimen name="text_tt_weight">190dp</dimen>
+    <dimen name="image_tt_height">40dp</dimen>
+    <dimen name="trapezium_view_width">210dp</dimen>
+    <dimen name="trapezium_view_width2">207dp</dimen>
+
+    <!--    setting-->
+    <dimen name="item_st_padding">16dp</dimen>
+    <!-- ===========  End Item  ================ -->
+
+    <dimen name="stroke_width">2dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="tool_bar_height">65dp</dimen>
+</resources>
