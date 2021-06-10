@@ -1,60 +1,61 @@
 package com.huyhuynh.mypokedex.screen.main.fragment.pokemon
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.huyhuynh.mypokedex.BR
 import com.huyhuynh.mypokedex.R
+import com.huyhuynh.mypokedex.data.dbconfig.DBHelper
+import com.huyhuynh.mypokedex.data.dbconfig.DBQueries
+import com.huyhuynh.mypokedex.data.model.Pokemon
+import com.huyhuynh.mypokedex.databinding.FragmentPokemonDetailsBinding
+import com.huyhuynh.mypokedex.screen.utils.CheckNetwork
+import demo.com.weatherapp.screen.base.fragment.BaseBindingFragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class PokemonDetailsFragment : BaseBindingFragment<FragmentPokemonDetailsBinding,PokemonDetailsFragmentViewModel>() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PokemonDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class PokemonDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override val bindingVariable: Int
+        get() = BR.pokemonViewModel
+    override val viewModel: PokemonDetailsFragmentViewModel
+        get() = ViewModelProviders.of(this).get(PokemonDetailsFragmentViewModel::class.java)
+    override val layoutResource: Int
+        get() = R.layout.fragment_pokemon_details
+
+
+    var dbHelper: DBHelper? = null
+    var dbQueries: DBQueries? = null
+    var pokemon: Pokemon?=null
+    override fun initVariable(savedInstanceState: Bundle?, view: View) {
+        //nhận data từ fragment trước
+        pokemon = arguments?.getSerializable("pokemon") as Pokemon?
+        pokemon?.let {
+            viewModel.getPokemonObject(it)
+        }
+
+        //bắt sự kiện delete, chỉ dùng cho trường hợp database
+        val context = activity?.applicationContext
+        dbHelper = context?.let { DBHelper(it) }
+        dbQueries = context?.let { DBQueries(it) }
+        viewDataBinding?.btnDelete?.setOnClickListener {
+            if (CheckNetwork.isConnectedNetwork()){
+                Toast.makeText(activity,"Chức năng chỉ sử dụng được khi không có kết nối mạng!",Toast.LENGTH_LONG).show()
+            } else {
+                dbQueries?.open()
+                pokemon?.id?.let {
+                    dbQueries?.deletePokemon(it)
+                }
+                dbQueries?.close()
+                activity?.onBackPressed()
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pokemon_details, container, false)
+    override fun initData(savedInstanceState: Bundle?, rootView: View) {
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PokemonDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PokemonDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

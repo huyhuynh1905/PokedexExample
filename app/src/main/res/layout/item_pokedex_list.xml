@@ -60,7 +60,8 @@
             android:background="@drawable/background_item_pokemon_span"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="@{pokemon.typeofpokemon[2]}"
+            android:text="@{pokemon.typeofpokemon[2].trim()}"
+            android:visibility="@{pokemon.typeofpokemon[2] == null ? View.GONE : View.VISIBLE}"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -74,7 +75,8 @@
             android:background="@drawable/background_item_pokemon_span"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="@{pokemon.typeofpokemon[1]}"
+            android:text="@{pokemon.typeofpokemon[1].trim()}"
+            android:visibility="@{pokemon.typeofpokemon[1] == null ? View.GONE : View.VISIBLE}"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -87,7 +89,8 @@
             android:background="@drawable/background_item_pokemon_span"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="@{pokemon.typeofpokemon[0]}"
+            android:text="@{pokemon.typeofpokemon[0].trim()}"
+            android:visibility="@{pokemon.typeofpokemon[0] == null ? View.GONE : View.VISIBLE}"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -111,7 +114,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:adjustViewBounds="true"
-            imageLoading="@{pokemon.imageurl}" />
+            loadImagePokedemon="@{pokemon.imageurl}" />
 
 
     </RelativeLayout>

@@ -17,7 +17,7 @@ class PokemonAdapter(var items: List<Pokemon>, var onItemClickListener: OnItemCl
         return items.size
     }
 
-    override fun onBindViewHolder(holder: PokemonAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binData(items[position], onItemClickListener)
     }
 
@@ -28,7 +28,7 @@ class PokemonAdapter(var items: List<Pokemon>, var onItemClickListener: OnItemCl
                 setVariable(BR.pokemon, pokemon)
                 executePendingBindings()
             }
-            binding.relativeLayoutBackground?.setOnClickListener {
+            binding.relativeLayoutBackground.setOnClickListener {
                 onItemClickListener?.onClickScan(pokemon)
             }
         }

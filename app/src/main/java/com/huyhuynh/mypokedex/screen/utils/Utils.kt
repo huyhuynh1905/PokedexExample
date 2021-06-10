@@ -1,9 +1,12 @@
 package com.huyhuynh.mypokedex.screen.utils
 
-import android.content.Context
+import android.util.Log
+import com.huyhuynh.mypokedex.BuildConfig
 
 object Utils {
-    fun getImage(imageName: String, context: Context): Int {
-        return context.resources.getIdentifier(imageName, "drawable", context.packageName)
+    fun log(tag: String, message: String) {
+        if (BuildConfig.DEBUG) {
+            Log.i(tag, message)
+        }
     }
 }

@@ -6,9 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.huyhuynh.mypokedex.BR
+import com.huyhuynh.mypokedex.screen.utils.CheckNetwork
 import com.huyhuynh.mypokedex.R
 import com.huyhuynh.mypokedex.databinding.ActivityLoginBinding
 import com.huyhuynh.mypokedex.screen.main.activity.mainactivity.MainActivity
+import demo.com.weatherapp.MainApplication
 import demo.com.weatherapp.screen.base.activity.BaseBindingActivity
 
 class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityViewModel>() {
@@ -22,6 +24,11 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityVie
     override fun initVariable(savedInstanceState: Bundle?) {
         viewDataBinding?.btnLogin?.setOnClickListener(this)
         viewDataBinding?.btnRegister?.setOnClickListener(this)
+
+        //call back check internet, thực thi suốt ứng dụng.
+        val checkNetwork =
+            CheckNetwork(MainApplication.getContextInstance())
+        checkNetwork.registerNetworkCallback()
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -31,13 +38,14 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginActivityVie
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btn_login -> {
-                var email = viewModel.email.get()
-                var pass = viewModel.pass.get()
-                if (email=="huy" && pass=="qwe"){
+                val email = viewModel.email.get()
+                val pass = viewModel.pass.get()
+                if ((email=="huy"||email=="huynh") && pass=="123"){
                     val intent = Intent(this,MainActivity::class.java)
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this,"Nhập email \"huy\" và password \"qwe\"",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Nhập email \"huy\" || \"huynh\" và password \"123\"",Toast.LENGTH_SHORT).show()
                 }
             }
             R.id.btn_register -> {
