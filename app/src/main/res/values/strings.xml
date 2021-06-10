@@ -147,7 +147,6 @@
     <string name="signyourname">Signature</string>
     <string name="prn_barcode">"123456789012345"</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="product">2020 Proudly Made By Unit Corp</string>
 
     <string name="title_black_ATM">Danh sách thẻ ATM bị khóa</string>
