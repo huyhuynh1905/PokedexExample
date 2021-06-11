@@ -41,5 +41,13 @@ class PokemonAdapter(var items: List<Pokemon>, var onItemClickListener: OnItemCl
 
     interface OnItemClickListener {
         fun onClickScan(value: Pokemon)
+        
+
+
+
     }
+
+    
+
+
 }
