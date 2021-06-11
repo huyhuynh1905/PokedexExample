@@ -1,4 +1,4 @@
-package com.huyhuynh.mypokedex.test
+package com.huyhuynh.mypokedex.test.qrcode
 
 import android.Manifest
 import android.annotation.SuppressLint
