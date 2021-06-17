@@ -13,6 +13,7 @@ import com.huyhuynh.mypokedex.data.model.Pokemon
 import com.huyhuynh.mypokedex.data.repository.PokemonRepository
 import com.huyhuynh.mypokedex.screen.utils.CheckNetwork
 import com.huyhuynh.mypokedex.screen.utils.InternetUtils
+import com.huyhuynh.mypokedex.screen.utils.Utils
 import demo.com.weatherapp.MainApplication
 import demo.com.weatherapp.data.source.remote.BaseApi
 import demo.com.weatherapp.screen.base.viewmodel.BaseViewModel
@@ -27,13 +28,14 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     var email:String?=null
 
     //
+    @SuppressLint("StaticFieldLeak")
     var context: Context? = MainApplication.getContextInstance()
     //var dbHelper: DBHelper? = null
     var dbQueries: DBQueries? = null
     init {
         loading.value = false
         repository = PokemonRepository(BaseApi().providerPokedexApi())
-//        loadData()
+        loadData()
     }
 
     @SuppressLint("CheckResult")
@@ -87,6 +89,7 @@ class PokedexListFragmentViewModel @Inject constructor(): BaseViewModel() {
     private fun handleError(message: Throwable) {
         loading.value = false
         message.printStackTrace()
+        Utils.log("xxxxx","xxxxx")
     }
 
 
