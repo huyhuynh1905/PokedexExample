@@ -28,8 +28,29 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msauth"
+                    android:host="com.huyhuynh.mypokedex"
+                    android:path="/MuqvjzxnmWv2SrF78EepGofY+Pc=" />
+            </intent-filter>-->
         </activity>
-        <activity android:name=".test.readwriteimage.ReadWriteImageActivity"></activity>
+        <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="com.huyhuynh.mypokedex"
+                    android:path="/MuqvjzxnmWv2SrF78EepGofY+Pc="
+                    android:scheme="msauth" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".test.readwriteimage.ReadWriteImageActivity" />
         <activity android:name=".test.qrcode.QRActivity" />
         <activity android:name=".test.qrcode.TestActivity" />
         <activity android:name=".screen.main.activity.onboardpage.OnBoardPageActivity" />
@@ -40,12 +61,12 @@
         <activity
             android:name=".screen.main.activity.login.LoginActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/SplashTheme" />
         <activity
             android:name=".screen.main.activity.mainactivity.MainActivity"
             android:label="MainActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/LoadTheme" />
     </application>
 
