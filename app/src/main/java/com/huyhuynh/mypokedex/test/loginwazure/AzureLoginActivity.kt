@@ -116,13 +116,12 @@ class AzureLoginActivity : AppCompatActivity() {
     }
 
     private fun callGraphAPI(authenticationResult: IAuthenticationResult) {
-        val accessToken: String = authenticationResult.accessToken
+        val accessToken: String = authenticationResult.getAccessToken()
         val graphClient: IGraphServiceClient = GraphServiceClient
             .builder()
             .authenticationProvider { request ->
                 Utils.log("Authenticating","request: ${request.requestUrl}")
                 Utils.log("Authenticating","Bearer: $accessToken")
-                Utils.log("Authenticating","Bearer replace: ${accessToken.replace("/",".")}")
                 request.addHeader("Authorization", "Bearer $accessToken")
             }
             .buildClient()
