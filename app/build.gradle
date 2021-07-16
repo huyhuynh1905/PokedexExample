@@ -51,6 +51,10 @@ dependencies {
     // lifecycle
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.0.0-alpha1'
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -73,8 +77,10 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.15'
 
     //room
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    kapt "android.arch.persistence.room:compiler:1.1.1"
+    implementation "androidx.room:room-runtime:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    androidTestImplementation "androidx.room:room-testing:2.3.0"
 
     //paging
     //2.1.2
