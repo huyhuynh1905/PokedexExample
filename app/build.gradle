@@ -77,10 +77,10 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.15'
 
     //room
-    implementation "androidx.room:room-runtime:2.3.0"
-    implementation "androidx.room:room-ktx:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
-    androidTestImplementation "androidx.room:room-testing:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.0-alpha03"
+    implementation "androidx.room:room-ktx:2.4.0-alpha03"
+    kapt "androidx.room:room-compiler:2.4.0-alpha03"
+    androidTestImplementation "androidx.room:room-testing:2.4.0-alpha03"
 
     //paging
     //2.1.2

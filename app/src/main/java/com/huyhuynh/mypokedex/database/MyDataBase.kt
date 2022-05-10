@@ -6,8 +6,9 @@ import androidx.annotation.RequiresApi
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.huyhuynh.mypokedex.data.model.Account
 
-@Database(entities = [ProductEntity::class], version = 1)
+@Database(entities = [Account::class], version = 1)
 abstract class MyDataBase : RoomDatabase() {
 
     abstract fun accountDao(): AccountDao
